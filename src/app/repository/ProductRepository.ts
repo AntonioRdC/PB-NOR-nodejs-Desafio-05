@@ -10,7 +10,7 @@ class ProductRepository {
   }
 
   public async get (payload: IQueryGet, page: number, limit: number): Promise<PaginateResult<IProductResponse>> {
-    return ProductSchema.paginate({ payload, stock_control_enabled: true },
+    return ProductSchema.paginate({ $and: [payload, { stock_control_enabled: true }] },
       { page, customLabels, limit })
   }
 }

@@ -29,6 +29,13 @@ class ProductController {
 
       return res.status(200).json(result)
     } catch (error) {
+      if (error.statusCode) {
+        return res.status(error.statusCode).json({
+          message: error.name,
+          details: error.message
+        })
+      }
+
       return res.status(500).json({ error })
     }
   }
