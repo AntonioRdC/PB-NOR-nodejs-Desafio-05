@@ -15,6 +15,7 @@ class ProductService {
     const result = await ProductRepository.get(payload, page, limit)
 
     if (result.totalCount === 0) throw new NotFoundError('Not found products')
+    if (Number(result.currentPage) > result.totalPages) throw new NotFoundError('Not found products')
 
     return result
   }
