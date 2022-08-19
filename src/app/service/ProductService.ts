@@ -1,9 +1,9 @@
-import { PaginateResult } from 'mongoose'
+import { PaginateResult, Types } from 'mongoose'
 
 import { IProductResponse, IProduct, IQueryGet } from '../interfaces/IProduct'
 import ProductRepository from '../repository/ProductRepository'
 import BadRequestError from '../errors/BadRequestError'
-
+import NotFoundError from '../errors/NotFoundError'
 class ProductService {
   public async create (payload: IProduct): Promise<IProductResponse> {
     const result = await ProductRepository.create(payload)
@@ -15,7 +15,19 @@ class ProductService {
     const result = await ProductRepository.get(payload, page, limit)
 
     if (result.totalCount === 0) {
-      throw new BadRequestError('Not found products')
+      throw new NotFoundError('Not found products')
+    }
+
+    return result
+  }
+
+  public async getById (id: string): Promise<IProductResponse> {
+    if (!Types.ObjectId.isValid(id)) throw new BadRequestError('Id not valid')
+
+    const result = await ProductRepository.getById(id)
+
+    if (!result) {
+      throw new NotFoundError('Not found product')
     }
 
     return result

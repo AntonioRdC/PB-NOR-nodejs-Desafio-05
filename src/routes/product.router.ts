@@ -7,5 +7,6 @@ const router = Router()
 
 router.post('/api/v1/product', createValidation, ProductController.create)
 router.get('/api/v1/product', getValidation, ProductController.get)
+router.get('/api/v1/product/:id', ProductController.getById)
 
 export default router

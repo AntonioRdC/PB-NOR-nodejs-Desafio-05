@@ -13,6 +13,10 @@ class ProductRepository {
     return ProductSchema.paginate({ $and: [payload, { stock_control_enabled: true }] },
       { page, customLabels, limit })
   }
+
+  public async getById (id: string): Promise<IProductResponse | null> {
+    return ProductSchema.findById(id)
+  }
 }
 
 export default new ProductRepository()
