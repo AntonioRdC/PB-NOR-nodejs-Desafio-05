@@ -17,6 +17,10 @@ class ProductRepository {
   public async getById (id: string): Promise<IProductResponse | null> {
     return ProductSchema.findById(id)
   }
+
+  public async update (id:string, payload: IProduct): Promise<IProductResponse | null> {
+    return ProductSchema.findByIdAndUpdate(id, payload, { returnDocument: 'after', runValidators: true })
+  }
 }
 
 export default new ProductRepository()

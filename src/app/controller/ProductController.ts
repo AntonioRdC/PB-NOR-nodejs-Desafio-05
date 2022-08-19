@@ -57,6 +57,18 @@ class ProductController {
       return res.status(500).json({ error })
     }
   }
+
+  public async update (req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params
+      const body = req.body
+      const resuly = await ProductService.update(id, body)
+
+      return res.status(200).json(resuly)
+    } catch (error) {
+      return res.status(500).json({ error })
+    }
+  }
 }
 
 export default new ProductController()

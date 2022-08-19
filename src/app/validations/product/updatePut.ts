@@ -7,10 +7,10 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       title: Joi.string().required().trim(),
       description: Joi.string().required().trim(),
       department: Joi.string().required().trim(),
-      bar_codes: Joi.string().required().trim().min(13).max(13),
       brand: Joi.string().required().trim(),
       price: Joi.number().required().min(0.01).max(1000),
-      qtd_stock: Joi.number().required().min(1).max(100000).integer(),
+      qtd_stock: Joi.number().required().min(0).max(100000).integer(),
+      bar_codes: Joi.string().forbidden(),
       stock_control_enabled: Joi.boolean().forbidden()
     })
 

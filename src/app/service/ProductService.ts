@@ -14,9 +14,7 @@ class ProductService {
   public async get (payload: IQueryGet, page: number, limit: number): Promise<PaginateResult<IProductResponse>> {
     const result = await ProductRepository.get(payload, page, limit)
 
-    if (result.totalCount === 0) {
-      throw new NotFoundError('Not found products')
-    }
+    if (result.totalCount === 0) throw new NotFoundError('Not found products')
 
     return result
   }
@@ -26,9 +24,20 @@ class ProductService {
 
     const result = await ProductRepository.getById(id)
 
-    if (!result) {
-      throw new NotFoundError('Not found product')
-    }
+    if (!result) throw new NotFoundError('Not found product')
+
+    return result
+  }
+
+  public async update (id: string, payload: IProduct): Promise<IProductResponse> {
+    if (!Types.ObjectId.isValid(id)) throw new BadRequestError('Id not valid')
+
+    if (payload.qtd_stock === 0) payload.stock_control_enabled = false
+    if (payload.qtd_stock !== 0) payload.stock_control_enabled = true
+
+    const result = await ProductRepository.update(id, payload)
+
+    if (!result) throw new NotFoundError('Not found product')
 
     return result
   }
