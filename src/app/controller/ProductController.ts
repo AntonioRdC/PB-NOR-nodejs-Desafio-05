@@ -2,9 +2,10 @@ import { Request, Response } from 'express'
 
 import ProductService from '../service/ProductService'
 import DuplicateKeyError from '../errors/DuplicateKeyError'
+import { IQueryGet } from '../interfaces/IProduct'
 
 class ProductController {
-  async create (req: Request, res: Response): Promise<Response> {
+  public async create (req: Request, res: Response): Promise<Response> {
     try {
       const body = req.body
       const result = await ProductService.create(body)
@@ -16,6 +17,18 @@ class ProductController {
         return res.status(400).json(DuplicateKeyError(nameError))
       }
 
+      return res.status(500).json({ error })
+    }
+  }
+
+  public async get (req: Request<{}, {}, {}, IQueryGet>, res: Response): Promise<Response> {
+    try {
+      const { page, limit, ...query } = req.query
+
+      const result = await ProductService.get(query, page || 1, limit || 50)
+
+      return res.status(200).json(result)
+    } catch (error) {
       return res.status(500).json({ error })
     }
   }

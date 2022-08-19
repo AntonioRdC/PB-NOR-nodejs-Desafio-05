@@ -23,3 +23,10 @@ export interface IProductResponse {
   stock_control_enabled?: boolean
   __v?: number
 }
+
+export interface IQueryGet {
+  department?: string
+  brand?: string
+  limit?: number
+  page?: number
+}
