@@ -41,6 +41,16 @@ class ProductService {
 
     return result
   }
+
+  public async delete (id: string): Promise<IProductResponse> {
+    if (!Types.ObjectId.isValid(id)) throw new BadRequestError('Id not valid')
+
+    const result = await ProductRepository.delete(id)
+
+    if (!result) throw new NotFoundError('Not found product')
+
+    return result
+  }
 }
 
 export default new ProductService()

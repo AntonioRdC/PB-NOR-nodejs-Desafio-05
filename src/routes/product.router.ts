@@ -12,5 +12,6 @@ router.get('/api/v1/product', getValidation, ProductController.get)
 router.get('/api/v1/product/:id', ProductController.getById)
 router.put('/api/v1/product/:id', updatePutValidation, ProductController.update)
 router.patch('/api/v1/product/:id', updatePatchValidation, ProductController.update)
+router.delete('/api/v1/product/:id', ProductController.delete)
 
 export default router

@@ -21,6 +21,10 @@ class ProductRepository {
   public async update (id:string, payload: IProduct): Promise<IProductResponse | null> {
     return ProductSchema.findByIdAndUpdate(id, payload, { returnDocument: 'after', runValidators: true })
   }
+
+  public async delete (id:string): Promise<IProductResponse | null> {
+    return ProductSchema.findByIdAndDelete(id)
+  }
 }
 
 export default new ProductRepository()

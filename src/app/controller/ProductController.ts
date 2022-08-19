@@ -66,6 +66,31 @@ class ProductController {
 
       return res.status(200).json(resuly)
     } catch (error) {
+      if (error.statusCode) {
+        return res.status(error.statusCode).json({
+          message: error.name,
+          details: error.message
+        })
+      }
+
+      return res.status(500).json({ error })
+    }
+  }
+
+  public async delete (req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params
+      const result = await ProductService.delete(id)
+
+      return res.status(204).json(result)
+    } catch (error) {
+      if (error.statusCode) {
+        return res.status(error.statusCode).json({
+          message: error.name,
+          details: error.message
+        })
+      }
+
       return res.status(500).json({ error })
     }
   }
