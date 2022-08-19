@@ -51,6 +51,16 @@ class ProductService {
 
     return result
   }
+
+  public async getLowStock (page: number, limit: number): Promise<PaginateResult<IProductResponse>> {
+    const payload = { qtd_stock: { $lt: 100 } }
+    const result = await ProductRepository.get(payload, page, limit)
+
+    if (result.totalCount === 0) throw new NotFoundError('Not found products')
+    if (Number(result.currentPage) > result.totalPages) throw new NotFoundError('Not found products')
+
+    return result
+  }
 }
 
 export default new ProductService()

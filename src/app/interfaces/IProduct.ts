@@ -25,6 +25,7 @@ export interface IProductResponse {
 }
 
 export interface IQueryGet {
+  qtd_stock?: object
   department?: string
   brand?: string
   limit?: number

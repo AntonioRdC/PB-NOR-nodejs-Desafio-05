@@ -9,6 +9,7 @@ const router = Router()
 
 router.post('/api/v1/product', createValidation, ProductController.create)
 router.get('/api/v1/product', getValidation, ProductController.get)
+router.get('/api/v1/product/low_stock', getValidation, ProductController.getLowStock)
 router.get('/api/v1/product/:id', ProductController.getById)
 router.put('/api/v1/product/:id', updatePutValidation, ProductController.update)
 router.patch('/api/v1/product/:id', updatePatchValidation, ProductController.update)

@@ -24,7 +24,6 @@ class ProductController {
   public async get (req: Request<{}, {}, {}, IQueryGet>, res: Response): Promise<Response> {
     try {
       const { page, limit, ...query } = req.query
-
       const result = await ProductService.get(query, page || 1, limit || 50)
 
       return res.status(200).json(result)
@@ -83,6 +82,24 @@ class ProductController {
       const result = await ProductService.delete(id)
 
       return res.status(204).json(result)
+    } catch (error) {
+      if (error.statusCode) {
+        return res.status(error.statusCode).json({
+          message: error.name,
+          details: error.message
+        })
+      }
+
+      return res.status(500).json({ error })
+    }
+  }
+
+  public async getLowStock (req: Request<{}, {}, {}, IQueryGet>, res: Response): Promise<Response> {
+    try {
+      const { page, limit } = req.query
+      const result = await ProductService.getLowStock(page || 1, limit || 50)
+
+      return res.status(200).json(result)
     } catch (error) {
       if (error.statusCode) {
         return res.status(error.statusCode).json({
