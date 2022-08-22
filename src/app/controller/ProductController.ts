@@ -3,6 +3,7 @@ import { Readable } from 'stream'
 import readline from 'readline'
 
 import DuplicateKeyError from '../errors/DuplicateKeyError'
+import BadRequestError from '../errors/BadRequestError'
 import ProductService from '../service/ProductService'
 import { IProduct, IQueryGet } from '../interfaces/IProduct'
 import createWithCsvValidation from '../validations/product/createWithCsv'
@@ -118,6 +119,8 @@ class ProductController {
   public async createWithCsv (req: Request, res: Response): Promise<Response> {
     try {
       const file = req.file?.buffer
+
+      if (!file) throw new BadRequestError('The file csv must be sent')
 
       const readableFile = new Readable()
       readableFile.push(file)
