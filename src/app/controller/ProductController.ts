@@ -1,8 +1,11 @@
 import { Request, Response } from 'express'
+import { Readable } from 'stream'
+import readline from 'readline'
 
-import ProductService from '../service/ProductService'
 import DuplicateKeyError from '../errors/DuplicateKeyError'
-import { IQueryGet } from '../interfaces/IProduct'
+import ProductService from '../service/ProductService'
+import { IProduct, IQueryGet } from '../interfaces/IProduct'
+import createWithCsvValidation from '../validations/product/createWithCsv'
 
 class ProductController {
   public async create (req: Request, res: Response): Promise<Response> {
@@ -106,6 +109,51 @@ class ProductController {
           message: error.name,
           details: error.message
         })
+      }
+
+      return res.status(500).json({ error })
+    }
+  }
+
+  public async createWithCsv (req: Request, res: Response): Promise<Response> {
+    try {
+      const file = req.file?.buffer
+
+      const readableFile = new Readable()
+      readableFile.push(file)
+      readableFile.push(null)
+
+      const productsLine = readline.createInterface({
+        input: readableFile
+      })
+
+      const products: IProduct[] = []
+
+      for await (const line of productsLine) {
+        const productLineSplit = line.split(',')
+
+        products.push({
+          title: productLineSplit[0],
+          description: productLineSplit[1],
+          department: productLineSplit[2],
+          brand: productLineSplit[3],
+          price: Number(productLineSplit[4]),
+          qtd_stock: Number(productLineSplit[5]),
+          bar_codes: productLineSplit[6]
+        })
+      }
+
+      for (const product of products) {
+        await createWithCsvValidation(product)
+      }
+
+      const result = await ProductService.create(products)
+
+      return res.status(201).json(result)
+    } catch (error) {
+      if (error.code === 11000) {
+        const nameError = Object.keys(error.keyValue)
+        return res.status(400).json(DuplicateKeyError(nameError))
       }
 
       return res.status(500).json({ error })

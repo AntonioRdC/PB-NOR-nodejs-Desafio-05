@@ -5,7 +5,7 @@ import ProductRepository from '../repository/ProductRepository'
 import BadRequestError from '../errors/BadRequestError'
 import NotFoundError from '../errors/NotFoundError'
 class ProductService {
-  public async create (payload: IProduct): Promise<IProductResponse> {
+  public async create (payload: any): Promise<IProductResponse> {
     const result = await ProductRepository.create(payload)
 
     return result

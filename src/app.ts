@@ -22,7 +22,7 @@ class App {
   }
 
   private middlewares (): void {
-    this.server.use(express.json({}))
+    this.server.use(express.json())
     this.server.use(
       express.urlencoded({
         extended: true
