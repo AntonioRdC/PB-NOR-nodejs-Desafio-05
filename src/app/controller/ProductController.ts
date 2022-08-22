@@ -154,6 +154,13 @@ class ProductController {
 
       return res.status(201).json(result)
     } catch (error) {
+      if (error.statusCode) {
+        return res.status(error.statusCode).json({
+          message: error.name,
+          details: error.message
+        })
+      }
+
       if (error.code === 11000) {
         const nameError = Object.keys(error.keyValue)
         return res.status(400).json(DuplicateKeyError(nameError))
