@@ -82,6 +82,5 @@ $ npm run dev
 
 
 ## ✋🏻 Autor
-| <img src="https://avatars.githubusercontent.com/AntonioRdC" width=115> |
-|---|---|---|---|---
-| <a href="https://github.com/AntonioRdC">Antonio Carvalho</a> |
+<img src="https://avatars.githubusercontent.com/AntonioRdC" width=115>  
+<a href="https://github.com/AntonioRdC">Antonio Carvalho</a>
