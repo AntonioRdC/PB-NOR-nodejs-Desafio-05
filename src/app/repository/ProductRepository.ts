@@ -18,6 +18,10 @@ class ProductRepository {
     return ProductSchema.findById(id)
   }
 
+  public async getByBarCode (barCodes: string): Promise<IProductResponse| null> {
+    return ProductSchema.findOne({ bar_codes: barCodes })
+  }
+
   public async update (id:string, payload: IProduct): Promise<IProductResponse | null> {
     return ProductSchema.findByIdAndUpdate(id, payload, { returnDocument: 'after', runValidators: true })
   }

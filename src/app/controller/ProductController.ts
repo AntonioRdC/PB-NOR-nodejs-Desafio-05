@@ -6,7 +6,6 @@ import DuplicateKeyError from '../errors/DuplicateKeyError'
 import BadRequestError from '../errors/BadRequestError'
 import ProductService from '../service/ProductService'
 import { IProduct, IQueryGet } from '../interfaces/IProduct'
-import createWithCsvValidation from '../validations/product/createWithCsv'
 
 class ProductController {
   public async create (req: Request, res: Response): Promise<Response> {
@@ -146,11 +145,7 @@ class ProductController {
         })
       }
 
-      for (const product of products) {
-        await createWithCsvValidation(product)
-      }
-
-      const result = await ProductService.create(products)
+      const result = await ProductService.createWithCsv(products)
 
       return res.status(201).json(result)
     } catch (error) {

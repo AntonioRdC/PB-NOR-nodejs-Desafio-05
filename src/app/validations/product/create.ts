@@ -14,7 +14,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       stock_control_enabled: Joi.boolean().forbidden()
     })
 
-    const { error } = await schema.validateAsync(req.body, { abortEarly: false })
+    const { error } = await schema.validateAsync(req.body, { abortEarly: false, debug: true })
     if (error) throw error
 
     return next()
