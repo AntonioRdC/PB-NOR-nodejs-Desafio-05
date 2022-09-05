@@ -1,8 +1,10 @@
 import express from 'express'
 import cors from 'cors'
+import swaggerUI from 'swagger-ui-express'
 
 import routes from './routes/index.router'
 import './infra/database/mongo/index'
+import swaggerDocs from './swagger.json'
 
 class App {
   public server: express.Application
@@ -25,6 +27,7 @@ class App {
       })
     )
     this.server.use(cors())
+    this.server.use('/api/v1/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
   }
 
   private routes (): void {
