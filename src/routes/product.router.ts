@@ -1,21 +1,23 @@
 import { Router } from 'express'
 import multer from 'multer'
 import ProductController from '../app/controller/ProductController'
-import createValidation from '../app/validations/product/create'
-import getValidation from '../app/validations/product/get'
-import updatePutValidation from '../app/validations/product/updatePut'
-import updatePatchValidation from '../app/validations/product/updatePatch'
+import createValidation from '../app/middleware/validation/product/create'
+import getValidation from '../app/middleware/validation/product/get'
+import updatePutValidation from '../app/middleware/validation/product/updatePut'
+import updatePatchValidation from '../app/middleware/validation/product/updatePatch'
+import auth from '../app/middleware/auth'
 
 const router = Router()
 const multerConfig = multer()
 
-router.post('/api/v1/product', createValidation, ProductController.create)
-router.post('/api/v1/product/csv', multerConfig.single('csv'), ProductController.createWithCsv)
-router.get('/api/v1/product', getValidation, ProductController.get)
-router.get('/api/v1/product/low_stock', getValidation, ProductController.getLowStock)
-router.get('/api/v1/product/:id', ProductController.getById)
-router.put('/api/v1/product/:id', updatePutValidation, ProductController.update)
-router.patch('/api/v1/product/:id', updatePatchValidation, ProductController.update)
-router.delete('/api/v1/product/:id', ProductController.delete)
+router.post('/api/v1/product', auth, createValidation, ProductController.create)
+router.post('/api/v1/product/csv', auth, multerConfig.single('csv'), ProductController.createWithCsv)
+router.get('/api/v1/product', auth, getValidation, ProductController.get)
+router.get('/api/v1/product/low_stock', auth, getValidation, ProductController.getLowStock)
+router.get('/api/v1/product/:id', auth, ProductController.getById)
+router.get('/api/v1/product/marketplace/:id', auth, ProductController.getMarketplace)
+router.put('/api/v1/product/:id', auth, updatePutValidation, ProductController.update)
+router.patch('/api/v1/product/:id', auth, updatePatchValidation, ProductController.update)
+router.delete('/api/v1/product/:id', auth, ProductController.delete)
 
 export default router

@@ -1,9 +1,10 @@
 import { PaginateResult, Types } from 'mongoose'
 
-import { IProductResponse, IProduct, IQueryGet } from '../interfaces/IProduct'
+import { IProductResponse, IProduct, IQueryGet } from '../interface/IProduct'
 import ProductRepository from '../repository/ProductRepository'
-import BadRequestError from '../errors/BadRequestError'
-import NotFoundError from '../errors/NotFoundError'
+import BadRequestError from '../error/BadRequestError'
+import NotFoundError from '../error/NotFoundError'
+import generationMarketplace from '../../utils/generationMarketplace'
 
 class ProductService {
   public async create (payload: any): Promise<IProductResponse> {
@@ -110,6 +111,18 @@ class ProductService {
       errors: errorDetails.length,
       errorDetails
     }
+  }
+
+  public async getMarketplace (id: string): Promise<IProductResponse> {
+    if (!Types.ObjectId.isValid(id)) throw new BadRequestError('Id not valid')
+
+    const product = await ProductRepository.getById(id)
+
+    if (!product) throw new NotFoundError('Not found product')
+
+    // generationMarketplace(product)
+
+    return product
   }
 }
 

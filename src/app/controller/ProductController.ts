@@ -2,10 +2,10 @@ import { Request, Response } from 'express'
 import { Readable } from 'stream'
 import readline from 'readline'
 
-import DuplicateKeyError from '../errors/DuplicateKeyError'
-import BadRequestError from '../errors/BadRequestError'
+import DuplicateKeyError from '../error/DuplicateKeyError'
+import BadRequestError from '../error/BadRequestError'
 import ProductService from '../service/ProductService'
-import { IProduct, IQueryGet } from '../interfaces/IProduct'
+import { IProduct, IQueryGet } from '../interface/IProduct'
 
 class ProductController {
   public async create (req: Request, res: Response): Promise<Response> {
@@ -159,6 +159,24 @@ class ProductController {
       if (error.code === 11000) {
         const nameError = Object.keys(error.keyValue)
         return res.status(400).json(DuplicateKeyError(nameError))
+      }
+
+      return res.status(500).json({ error })
+    }
+  }
+
+  public async getMarketplace (req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params
+      const result = await ProductService.getMarketplace(id)
+
+      return res.status(200).json(result)
+    } catch (error) {
+      if (error.statusCode) {
+        return res.status(error.statusCode).json({
+          message: error.name,
+          details: error.message
+        })
       }
 
       return res.status(500).json({ error })

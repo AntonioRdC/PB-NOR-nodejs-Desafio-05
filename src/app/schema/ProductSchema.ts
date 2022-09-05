@@ -1,7 +1,7 @@
 import { Schema, model, PaginateModel } from 'mongoose'
 import paginate from 'mongoose-paginate-v2'
 
-import { IProduct } from '../interfaces/IProduct'
+import { IProduct } from '../interface/IProduct'
 
 const schema = new Schema<IProduct>({
   title: { type: String, required: true },
