@@ -120,7 +120,7 @@ class ProductService {
 
     if (!product) throw new NotFoundError('Not found product')
 
-    // generationMarketplace(product)
+    generationMarketplace(product)
 
     return product
   }

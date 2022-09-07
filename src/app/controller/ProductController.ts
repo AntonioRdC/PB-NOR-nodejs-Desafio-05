@@ -6,6 +6,7 @@ import DuplicateKeyError from '../error/DuplicateKeyError'
 import BadRequestError from '../error/BadRequestError'
 import ProductService from '../service/ProductService'
 import { IProduct, IQueryGet } from '../interface/IProduct'
+import Logger from '../config/logger'
 
 class ProductController {
   public async create (req: Request, res: Response): Promise<Response> {
@@ -31,6 +32,7 @@ class ProductController {
 
       return res.status(200).json(result)
     } catch (error) {
+      Logger.error(error.message)
       if (error.statusCode) {
         return res.status(error.statusCode).json({
           message: error.name,
