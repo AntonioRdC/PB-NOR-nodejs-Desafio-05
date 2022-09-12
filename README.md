@@ -6,6 +6,10 @@
 
 Desafio final do **Programa de Bolsas de NodeJS da [Compass.uol](https://compass.uol/)**.
 
+## Deploy Heroku
+
+https://compasstore.herokuapp.com/api/v1/api-docs/
+
 ## Sumário
 * ### [Como inicializar](#-como-inicializar)
 * ### [Endpoints](#-endpoints)
