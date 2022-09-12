@@ -123,3 +123,9 @@
 [35m[39m
 2022-09-12 12:48:22:4822 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 250.224 ms[39m
 [35m[39m
+2022-09-12 13:18:37:1837 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 116.256 ms[39m
+[35m[39m
+2022-09-12 13:18:39:1839 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 85.666 ms[39m
+[35m[39m
+2022-09-12 13:18:42:1842 [35mhttp[39m: [35mGET /api/v1/product - status: 401 - 0.881 ms[39m
+[35m[39m

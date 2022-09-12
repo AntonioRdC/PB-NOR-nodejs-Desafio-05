@@ -182,7 +182,6 @@ class ProductService {
 }
 
 function assignObjectMarket (MarketObj, ...values) {
-  console.log(MarketObj, values)
   if (!values.length) return MarketObj
   const value = values.shift()
 

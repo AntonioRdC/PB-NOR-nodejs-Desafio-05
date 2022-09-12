@@ -6,6 +6,7 @@
   "author": "Antonio Ribeiro <antonioribeiroamg@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "nodemon ./src/server.ts",
     "prepare": "husky install",
     "test": "jest --forceExit"
