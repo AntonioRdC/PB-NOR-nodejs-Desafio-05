@@ -93,6 +93,14 @@ $ npm run dev
 | `stock_control_enabled`  | Number    | false    | false  |
 
 
+### User Table
+|         FieldName        |    Type   | Required | Unique |
+|--------------------------|:---------:|:--------:|:------:|
+| `_id`                    | ObjectId  | true     | true   |
+| `email`                  | String    | true     | true   |
+| `password`               | String    | true     | false  |
+
+
 ## Autor
 <img src="https://avatars.githubusercontent.com/AntonioRdC" width=115>  
 <a href="https://github.com/AntonioRdC">Antonio Carvalho</a>
