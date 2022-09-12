@@ -1,10 +1,10 @@
 import { PaginateResult, Types } from 'mongoose'
 
-import { IProductResponse, IProduct, IQueryGet } from '../interface/IProduct'
+import { IProductResponse, IProduct, IQueryGet, IMapper } from '../interface/IProduct'
 import ProductRepository from '../repository/ProductRepository'
 import BadRequestError from '../error/BadRequestError'
 import NotFoundError from '../error/NotFoundError'
-import generationMarketplace from '../../utils/generationMarketplace'
+import mapper from '../../mapper/mapper.json'
 
 class ProductService {
   public async create (payload: any): Promise<IProductResponse> {
@@ -113,17 +113,91 @@ class ProductService {
     }
   }
 
-  public async getMarketplace (id: string): Promise<IProductResponse> {
-    if (!Types.ObjectId.isValid(id)) throw new BadRequestError('Id not valid')
+  public async getMarketplace (id: string) {
+    const result = await ProductRepository.getById(id)
+    if (!result) throw new NotFoundError('Not found product')
 
-    const product = await ProductRepository.getById(id)
+    const { fields }:IMapper = mapper
 
-    if (!product) throw new NotFoundError('Not found product')
+    const arrayMarketObject:Array<Object> = []
 
-    generationMarketplace(product)
+    fields.forEach(field => {
+      const { fieldProduct, fieldMarket, type, optional } = field
 
-    return product
+      const product = fieldProduct.replace('product.', '')
+      const market = fieldMarket.split('.')
+
+      const marketObject = {}
+
+      market.reduce((prevVal: Object, elem: string): Object => {
+        if (market.indexOf(elem) === market.length - 1) {
+          switch (type) {
+            case ('text'):
+              prevVal[elem] = result[product].toString()
+              break
+            case ('number'):
+              prevVal[elem] = Number(result[product])
+              break
+            case ('boolean'):
+              prevVal[elem] = Boolean(result[product])
+              break
+            case ('array'):
+              prevVal[elem] = Array(result[product])
+              break
+            default:
+              prevVal[elem] = result[product]
+          }
+
+          if (optional) {
+            const option = Object.values(optional)
+            const [title, locale, currency] = option
+
+            if (title === 'break') {
+              prevVal[elem] = prevVal[elem].match(/.{2}/g)
+              prevVal[elem].push(prevVal[elem].charAt(prevVal[elem].length - 1))
+            } if (title === 'currency') {
+              prevVal[elem] = Number(prevVal[elem]).toLocaleString(locale, { style: 'currency', currency })
+            }
+
+            return prevVal[elem]
+          } else {
+            return prevVal[elem]
+          }
+        } else {
+          return (prevVal[elem] = {})
+        }
+      }, marketObject)
+
+      arrayMarketObject.push(marketObject)
+    })
+
+    let assignMarketObject = {}
+
+    arrayMarketObject.forEach(field => {
+      assignMarketObject = assignObjectMarket(assignMarketObject, field)
+    })
+
+    return assignMarketObject
   }
+}
+
+function assignObjectMarket (MarketObj, ...values) {
+  console.log(MarketObj, values)
+  if (!values.length) return MarketObj
+  const value = values.shift()
+
+  for (const key in value) {
+    if (typeof value[key] === 'object') {
+      if (!MarketObj[key]) {
+        Object.assign(MarketObj, { [key]: {} })
+      }
+      assignObjectMarket(MarketObj[key], value[key])
+    } else {
+      Object.assign(MarketObj, { [key]: value[key] })
+    }
+  }
+
+  return assignObjectMarket(MarketObj, ...values)
 }
 
 export default new ProductService()

@@ -1,4 +1,6 @@
 help
 node_modules
+logs
 yarn.lock
 .env
+.husky

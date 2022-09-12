@@ -32,7 +32,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/product-request"
+                "$ref": "#/components/schemas/productRequest"
               }
             }
           },
@@ -44,7 +44,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product-response"
+                  "$ref": "#/components/schemas/productResponse"
                 }
               }
             }
@@ -113,7 +113,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product-response-paginate"
+                  "$ref": "#/components/schemas/productResponsePagi"
                 }
               }
             }
@@ -164,7 +164,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product-response"
+                  "$ref": "#/components/schemas/productResponse"
                 }
               }
             }
@@ -211,7 +211,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/product-request"
+                "$ref": "#/components/schemas/productRequest"
               }
             }
           },
@@ -223,7 +223,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product-response"
+                  "$ref": "#/components/schemas/productResponse"
                 }
               }
             }
@@ -270,7 +270,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/product-request"
+                "$ref": "#/components/schemas/productRequest"
               }
             }
           },
@@ -282,7 +282,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product-response"
+                  "$ref": "#/components/schemas/productResponse"
                 }
               }
             }
@@ -373,7 +373,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/product-request"
+                "$ref": "#/components/schemas/productRequest"
               }
             }
           },
@@ -385,7 +385,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product-response"
+                  "$ref": "#/components/schemas/productResponse"
                 }
               }
             }
@@ -426,7 +426,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product-response-paginate"
+                  "$ref": "#/components/schemas/productResponsePagi"
                 }
               }
             }
@@ -447,7 +447,7 @@
   },
   "components": {
     "schemas": {
-      "product-request": {
+      "productRequest": {
         "type": "object",
         "properties": {
           "title": {
@@ -482,7 +482,7 @@
           }
         }
       },
-      "product-response": {
+      "productResponse": {
         "type": "object",
         "properties": {
           "title": {
@@ -539,13 +539,13 @@
           }
         }
       },
-      "product-response-paginate": {
+      "productResponsePagi": {
         "type": "object",
         "properties": {
           "products": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/product-response"
+              "$ref": "#/components/schemas/productResponse"
             }
           },
           "totalCount": {

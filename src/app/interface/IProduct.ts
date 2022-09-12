@@ -31,3 +31,14 @@ export interface IQueryGet {
   limit?: number
   page?: number
 }
+
+export interface IMapperField {
+  type: string
+  fieldProduct: string
+  fieldMarket: string
+  optional?: Array<string>
+}
+
+export interface IMapper {
+  fields: Array<IMapperField>
+}
