@@ -8,7 +8,7 @@ Desafio final do **Programa de Bolsas de NodeJS da [Compass.uol](https://compass
 
 ## Deploy Heroku
 
-compasstore.herokuapp.com/api/v1/api-docs/
+https://compasstore.herokuapp.com/api/v1/api-docs/
 
 ## Sumário
 * ### [Como inicializar](#-como-inicializar)
