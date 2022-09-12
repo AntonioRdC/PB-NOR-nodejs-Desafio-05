@@ -181,18 +181,18 @@ class ProductService {
   }
 }
 
-function assignObjectMarket (MarketObj, ...values) {
+function assignObjectMarket (MarketObj: object, ...values: Array<Object>) {
   if (!values.length) return MarketObj
   const value = values.shift()
 
-  for (const key in value) {
-    if (typeof value[key] === 'object') {
-      if (!MarketObj[key]) {
-        Object.assign(MarketObj, { [key]: {} })
+  for (const index in value) {
+    if (typeof value[index] === 'object') {
+      if (!MarketObj[index]) {
+        Object.assign(MarketObj, { [index]: {} })
       }
-      assignObjectMarket(MarketObj[key], value[key])
+      assignObjectMarket(MarketObj[index], value[index])
     } else {
-      Object.assign(MarketObj, { [key]: value[key] })
+      Object.assign(MarketObj, { [index]: value[index] })
     }
   }
 

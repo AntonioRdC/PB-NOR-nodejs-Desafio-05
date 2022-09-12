@@ -129,3 +129,87 @@
 [35m[39m
 2022-09-12 13:18:42:1842 [35mhttp[39m: [35mGET /api/v1/product - status: 401 - 0.881 ms[39m
 [35m[39m
+2022-09-12 13:53:02:532 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 77.677 ms[39m
+[35m[39m
+2022-09-12 13:53:03:533 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 49.754 ms[39m
+[35m[39m
+2022-09-12 13:53:31:5331 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 64.195 ms[39m
+[35m[39m
+2022-09-12 13:53:36:5336 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 46.439 ms[39m
+[35m[39m
+2022-09-12 13:56:00:560 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 75.807 ms[39m
+[35m[39m
+2022-09-12 13:56:59:5659 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 361.804 ms[39m
+[35m[39m
+2022-09-12 13:59:30:5930 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 500 - 75.780 ms[39m
+[35m[39m
+2022-09-12 13:59:32:5932 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 500 - 46.607 ms[39m
+[35m[39m
+2022-09-12 14:08:13:813 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 75.531 ms[39m
+[35m[39m
+2022-09-12 14:08:14:814 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 57.081 ms[39m
+[35m[39m
+2022-09-12 14:09:31:931 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 69.314 ms[39m
+[35m[39m
+2022-09-12 14:11:59:1159 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 98.113 ms[39m
+[35m[39m
+2022-09-12 14:12:00:120 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 76.565 ms[39m
+[35m[39m
+2022-09-12 14:14:18:1418 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 500 - 2701.328 ms[39m
+[35m[39m
+2022-09-12 14:18:36:1836 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 500 - 79.957 ms[39m
+[35m[39m
+2022-09-12 14:18:38:1838 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 500 - 60.185 ms[39m
+[35m[39m
+2022-09-12 14:39:00:390 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 93.292 ms[39m
+[35m[39m
+2022-09-12 14:40:40:4040 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 500 - 97.515 ms[39m
+[35m[39m
+2022-09-12 14:41:33:4133 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 500 - 104.366 ms[39m
+[35m[39m
+2022-09-12 14:42:22:4222 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 82.710 ms[39m
+[35m[39m
+2022-09-12 14:43:07:437 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 85.578 ms[39m
+[35m[39m
+2022-09-12 14:44:08:448 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 82.968 ms[39m
+[35m[39m
+2022-09-12 14:44:11:4411 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 61.467 ms[39m
+[35m[39m
+2022-09-12 14:44:35:4435 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 60.198 ms[39m
+[35m[39m
+2022-09-12 14:45:02:452 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 79.108 ms[39m
+[35m[39m
+2022-09-12 14:45:39:4539 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 87.231 ms[39m
+[35m[39m
+2022-09-12 14:51:33:5133 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 107.084 ms[39m
+[35m[39m
+2022-09-12 14:53:17:5317 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 131.997 ms[39m
+[35m[39m
+2022-09-12 15:02:07:27 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 93.344 ms[39m
+[35m[39m
+2022-09-12 15:02:40:240 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 96.537 ms[39m
+[35m[39m
+2022-09-12 15:21:48:2148 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 125.717 ms[39m
+[35m[39m
+2022-09-12 15:23:25:2325 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 93.565 ms[39m
+[35m[39m
+2022-09-12 15:23:56:2356 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 103.649 ms[39m
+[35m[39m
+2022-09-12 15:24:32:2432 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 74.563 ms[39m
+[35m[39m
+2022-09-12 15:27:24:2724 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 1822.678 ms[39m
+[35m[39m
+2022-09-12 15:34:39:3439 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 103.019 ms[39m
+[35m[39m
+2022-09-12 15:41:37:4137 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 82.744 ms[39m
+[35m[39m
+2022-09-12 15:41:38:4138 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 65.526 ms[39m
+[35m[39m
+2022-09-12 15:44:10:4410 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 98.657 ms[39m
+[35m[39m
+2022-09-12 15:44:55:4455 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 92.874 ms[39m
+[35m[39m
+2022-09-12 15:52:09:529 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 92.649 ms[39m
+[35m[39m
+2022-09-12 16:20:47:2047 [35mhttp[39m: [35mGET /api/v1/product/marketplace/630e1e6157e846fe74e8a0c6 - status: 200 - 1383.018 ms[39m
+[35m[39m
