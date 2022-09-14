@@ -13,14 +13,11 @@
   "tags": [
     {
       "name": "Product"
-    },
-    {
-      "name": "User"
     }
   ],
   "servers": [
     {
-      "url": "http://localhost:3000/api/v1"
+      "url": "https://compasstore.herokuapp.com/api/v1"
     }
   ],
   "paths": {
@@ -35,7 +32,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/productRequest"
+                "$ref": "#/components/schemas/product"
               }
             }
           },
@@ -43,36 +40,20 @@
         },
         "responses": {
           "201": {
-            "description": "Product created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/productResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Created"
           },
           "400": {
-            "description": "Validate Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -112,36 +93,20 @@
         ],
         "responses": {
           "200": {
-            "description": "returned products",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/productResponsePagi"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Success"
           },
           "400": {
-            "description": "Validate Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ValidateError"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/product/{id}": {
@@ -163,46 +128,23 @@
         "description": "Return one product by id",
         "responses": {
           "200": {
-            "description": "Returned product",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/productResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Success"
           },
           "400": {
-            "description": "Id not valid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "404": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -214,7 +156,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/productRequest"
+                "$ref": "#/components/schemas/product"
               }
             }
           },
@@ -222,46 +164,23 @@
         },
         "responses": {
           "200": {
-            "description": "Updated product",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/productResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Success"
           },
           "400": {
-            "description": "Id not valid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "404": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -273,7 +192,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/productRequest"
+                "$ref": "#/components/schemas/product"
               }
             }
           },
@@ -281,46 +200,23 @@
         },
         "responses": {
           "200": {
-            "description": "Updated product",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/productResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Success"
           },
           "400": {
-            "description": "Id not valid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "404": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -330,39 +226,23 @@
         "description": "Remove one product by id",
         "responses": {
           "204": {
-            "description": "Deleted product"
+            "$ref": "#/components/responses/NoContent"
           },
           "400": {
-            "description": "Id not valid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "404": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/product/csv": {
@@ -370,13 +250,13 @@
         "tags": [
           "Product"
         ],
-        "summary": "Create product with Csv",
+        "summary": "Creat product with Csv",
         "description": "Created multiples products with csv send along the route",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/productRequest"
+                "$ref": "#/components/schemas/product"
               }
             }
           },
@@ -384,36 +264,20 @@
         },
         "responses": {
           "201": {
-            "description": "Created product(s)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/productResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Created"
           },
           "400": {
-            "description": "Validate Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ValidateError"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/product/low_stock": {
@@ -425,26 +289,52 @@
         "description": "Get all products with stock low < 100",
         "responses": {
           "200": {
-            "description": "Return products",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/productResponsePagi"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Success"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/product/marketplace/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
           }
         }
+      ],
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Get Product and create marketplace",
+        "description": "Get Product with id and response marketplace format",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/ValidateError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/user": {
@@ -465,34 +355,13 @@
         },
         "responses": {
           "201": {
-            "description": "User created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/user"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Created"
           },
           "400": {
-            "description": "Validate Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ValidateError"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
         }
       },
@@ -503,34 +372,13 @@
         "summary": "Get Users",
         "responses": {
           "200": {
-            "description": "returned Users",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/user"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Success"
           },
           "400": {
-            "description": "Validate Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
         }
       }
@@ -550,6 +398,7 @@
         "tags": [
           "User"
         ],
+        "summary": "Update User",
         "requestBody": {
           "content": {
             "application/json": {
@@ -562,44 +411,13 @@
         },
         "responses": {
           "200": {
-            "description": "Updated User",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/user"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Success"
           },
           "400": {
-            "description": "Id not valid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
         }
       },
@@ -607,39 +425,16 @@
         "tags": [
           "User"
         ],
+        "summary": "Delete User",
         "responses": {
           "200": {
-            "description": "Deleted User"
+            "$ref": "#/components/responses/Success"
           },
           "400": {
-            "description": "Id not valid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
         }
       }
@@ -649,7 +444,7 @@
         "tags": [
           "User"
         ],
-        "summary": "Creat Token to user",
+        "summary": "Creat Token with user",
         "requestBody": {
           "content": {
             "application/json": {
@@ -662,34 +457,13 @@
         },
         "responses": {
           "201": {
-            "description": "Token created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/userToken"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Created"
           },
           "400": {
-            "description": "Validate Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "500": {
-            "description": "Internal Error Server",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/InternalServerError"
           }
         }
       }
@@ -697,42 +471,7 @@
   },
   "components": {
     "schemas": {
-      "productRequest": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "example": "Azites, Óleos e Vinagres"
-          },
-          "description": {
-            "type": "string",
-            "example": "Óleo de Soja Soya Garrafa 900ml"
-          },
-          "department": {
-            "type": "string",
-            "example": "Congelados"
-          },
-          "bar_codes": {
-            "type": "string",
-            "example": 7891437941641
-          },
-          "brand": {
-            "type": "string",
-            "example": "Soya"
-          },
-          "price": {
-            "type": "number",
-            "format": "double",
-            "example": 12.45
-          },
-          "qtd_stock": {
-            "type": "integer",
-            "format": "int32",
-            "example": 234
-          }
-        }
-      },
-      "productResponse": {
+      "product": {
         "type": "object",
         "properties": {
           "title": {
@@ -789,33 +528,6 @@
           }
         }
       },
-      "productResponsePagi": {
-        "type": "object",
-        "properties": {
-          "products": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/productResponse"
-            }
-          },
-          "totalCount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "pageSize": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "currentPage": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      },
       "user": {
         "type": "object",
         "properties": {
@@ -825,48 +537,60 @@
           },
           "password": {
             "type": "string",
-            "example": "123senh"
-          }
-        }
-      },
-      "userToken": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "example": "antonio@email.com"
+            "example": 123456
           },
-          "password": {
+          "_id": {
             "type": "string",
-            "example": "123senha"
+            "example": "6316771b0e2917016a3582dc"
           },
-          "token": {
+          "createdAt": {
             "type": "string",
-            "example": "wefwenof3i2u2biubf2iu3bi2u3b"
+            "format": "date-time",
+            "example": "2022-09-05T22:24:27.111Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-09-05T22:24:27.111Z"
+          },
+          "__v": {
+            "type": "number",
+            "example": 0
           }
         }
+      }
+    },
+    "responses": {
+      "Success": {
+        "description": "200. Request Success"
       },
-      "error": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "details": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
+      "Created": {
+        "description": "201. Created"
+      },
+      "NoContent": {
+        "description": "204. No Content"
+      },
+      "BadRequest": {
+        "description": "400. Bad Request"
+      },
+      "ValidateError": {
+        "description": "400. Validate Error"
+      },
+      "UnauthorizedError": {
+        "description": "401. Unauthorized Error"
+      },
+      "NotFound": {
+        "description": "404. Not Found"
+      },
+      "InternalServerError": {
+        "description": "500. Internal Server Error"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
