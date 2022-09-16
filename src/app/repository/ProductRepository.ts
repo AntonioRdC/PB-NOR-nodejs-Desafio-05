@@ -2,7 +2,7 @@ import { PaginateResult } from 'mongoose'
 
 import { IProduct, IProductResponse, IQueryGet } from '../interface/IProduct'
 import ProductSchema from '../schema/ProductSchema'
-import customLabels from '../../utils/customLabels'
+import customLabels from '../utils/customLabels'
 
 class ProductRepository {
   public async create (payload: IProduct): Promise<IProductResponse> {

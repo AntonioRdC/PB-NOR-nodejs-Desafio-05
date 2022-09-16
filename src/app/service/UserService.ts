@@ -1,12 +1,11 @@
 import bcrypt from 'bcryptjs'
 import { Types } from 'mongoose'
-import jwt from 'jsonwebtoken'
 
 import { IUser, IUserResponse, IUserResponseAuth } from '../interface/IUser'
 import UserRepository from '../repository/UserRepository'
 import BadRequestError from '../error/BadRequestError'
 import NotFoundError from '../error/NotFoundError'
-import authConfig from '../config/auth.json'
+import createToken from '../utils/createToken'
 
 class UserService {
   public async create (payload: IUser): Promise<IUserResponse> {
@@ -54,9 +53,7 @@ class UserService {
 
     user.password = undefined
 
-    const token = jwt.sign({ id: user._id }, authConfig.secret, {
-      expiresIn: 86400
-    })
+    const token = createToken(user)
     const result = { token, user }
 
     return result
